@@ -3,15 +3,17 @@ require_relative "../recipe.rb"
 
 describe Recipe do
   it "should have name" do
-     	recipe = Recipe.new "Spicy bread"
-      recipe.name.should eql "Spicy bread"
+   	recipe = Recipe.new "Spicy bread"
+    recipe.name.should eql "Spicy bread"
   end
   it "should consist of ingredients" do
     recipe = Recipe.new "Spicy bread"
     recipe.consists_of {
-      add (200.grams.of Flour)
+      add 200.grams.of Flour
+      add 1.pound.of Nutmeg
     }
     recipe.ingredients.should include Ingredient.new('Flour', 200)
+    recipe.ingredients.should include Ingredient.new('Nutmeg', 453.59237)
   end
 end
 
