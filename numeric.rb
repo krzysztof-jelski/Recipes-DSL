@@ -13,8 +13,10 @@ class Numeric
   alias_method :lbs, :pound
   alias_method :pounds, :pound
   
-  def of(what)
-    ingredient = Ingredient.new(what)
+  def of(ingredient)
+    if ingredient.kind_of? String
+      ingredient = Ingredient.new(ingredient)
+    end
     ingredient.quantity = self
     ingredient
   end

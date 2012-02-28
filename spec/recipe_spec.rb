@@ -1,5 +1,4 @@
 require_relative "../recipe.rb"
-require 'rspec'
 
 
 describe Recipe do
@@ -7,7 +6,13 @@ describe Recipe do
      	recipe = Recipe.new "Spicy bread"
       recipe.name.should eql "Spicy bread"
   end
-  
+  it "should consist of ingredients" do
+    recipe = Recipe.new "Spicy bread"
+    recipe.consists_of {
+      add (200.grams.of Flour)
+    }
+    recipe.ingredients.should include Ingredient.new('Flour', 200)
+  end
 end
 
 describe "grams" do
@@ -41,3 +46,5 @@ describe "Ingredient created from numeric" do
     its(:quantity) { should == 215 }
     its(:name) { should == "Flour" }
 end
+
+
