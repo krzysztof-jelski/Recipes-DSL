@@ -6,6 +6,10 @@ class NutritionProfile
     @protein, @lipid, @sugars, @calcium, @sodium =  protein, lipid, sugars, calcium, sodium
   end
   
+  def self.create_from_hash(name, hash)
+    NutritionProfile.new(name, hash['protein'], hash['lipid'], hash['sugars'], hash['calcium'], hash['sodium'])
+  end
+  
   def to_s()
     <<-profile
 \tProtein: #{@protein}
